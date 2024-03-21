@@ -2,7 +2,7 @@
 
 ## TODOs
 
-- [ ] Build a simple langchain hook to read URL link contents
+- [x] Build a simple langchain hook to read URL link contents
 - [ ] Crawl through lethain pages 
 - [ ] Store contents in vectordb 
 - [ ] Init Ollama & LLM

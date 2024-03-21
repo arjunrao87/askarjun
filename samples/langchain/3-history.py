@@ -39,4 +39,8 @@ chat_history = [
     HumanMessage(content="Can LangSmith help test my LLM applications?"),
     AIMessage(content="Yes!"),
 ]
-print(retriever_chain.invoke({"chat_history": chat_history, "input": "Tell me how?"}))
+response = retriever_chain.invoke(
+    {"chat_history": chat_history, "input": "Tell me how?"}
+)
+
+print(response["answer"])

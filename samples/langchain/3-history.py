@@ -6,9 +6,15 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.chains import create_history_aware_retriever
 from langchain_core.messages import AIMessage, HumanMessage
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import create_retrieval_chain
 
 prompt = ChatPromptTemplate.from_messages(
     [
+        (
+            "system",
+            "Answer the user's questions based on the below context:\n\n{context}",
+        ),
         MessagesPlaceholder(variable_name="chat_history"),
         ("user", "{input}"),
         (
@@ -39,7 +45,12 @@ chat_history = [
     HumanMessage(content="Can LangSmith help test my LLM applications?"),
     AIMessage(content="Yes!"),
 ]
-response = retriever_chain.invoke(
+
+document_chain = create_stuff_documents_chain(llm, prompt)
+# TODO: doesn't work with retriever_chain instead of retriever
+retrieval_chain = create_retrieval_chain(retriever, document_chain)
+
+response = retrieval_chain.invoke(
     {"chat_history": chat_history, "input": "Tell me how?"}
 )
 

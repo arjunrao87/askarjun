@@ -10,7 +10,7 @@ prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are a skilled technical writer.",
+            "You are a skilled Director of Engineering.",
         ),
         ("human", "{user_input}"),
     ]
@@ -18,6 +18,6 @@ prompt = ChatPromptTemplate.from_messages(
 chain = prompt | llm | output
 
 ## Winner winner chicken dinner
-response = chain.invoke({"user_input": "how can langsmith help with testing?"})
+response = chain.invoke({"user_input": "who are navigators?"})
 print(":::ROUND 1:::")
 print(response)

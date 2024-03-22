@@ -10,7 +10,7 @@ from langchain.chains import create_retrieval_chain
 # Invoke chain with RAG context
 llm = Ollama(model="mistral")
 ## Load page content
-loader = WebBaseLoader("https://docs.smith.langchain.com/user_guide")
+loader = WebBaseLoader("https://lethain.com/navigators/")
 docs = loader.load()
 
 ## Vector store things
@@ -38,6 +38,6 @@ retriever = vector_store.as_retriever()
 retrieval_chain = create_retrieval_chain(retriever, docs_chain)
 
 ## Winner winner chicken dinner
-response = retrieval_chain.invoke({"input": "how can langsmith help with testing?"})
+response = retrieval_chain.invoke({"input": "who are navigators?"})
 print(":::ROUND 2:::")
 print(response["answer"])

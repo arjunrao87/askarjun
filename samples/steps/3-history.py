@@ -29,7 +29,7 @@ prompt = ChatPromptTemplate.from_messages(
 llm = Ollama(model="mistral")
 
 ## Load page content
-loader = WebBaseLoader("https://docs.smith.langchain.com/user_guide")
+loader = WebBaseLoader("https://lethain.com/eng-execs-primer/")
 docs = loader.load()
 
 ## Vector store things
@@ -42,16 +42,21 @@ retriever = vector_store.as_retriever()
 # history
 retriever_chain = create_history_aware_retriever(llm, retriever, prompt)
 chat_history = [
-    HumanMessage(content="Can LangSmith help test my LLM applications?"),
+    HumanMessage(content="Did Will Larson write The Engineering Executive's Primer?"),
     AIMessage(content="Yes!"),
 ]
 
-document_chain = create_stuff_documents_chain(llm, prompt)
-# TODO: doesn't work with retriever_chain instead of retriever
-retrieval_chain = create_retrieval_chain(retriever, document_chain)
-
-response = retrieval_chain.invoke(
-    {"chat_history": chat_history, "input": "Tell me how?"}
+print(retriever_chain.invoke(
+    {"chat_history": chat_history, "input": "How many pages have been completed?"}
+)
 )
 
-print(response["answer"])
+document_chain = create_stuff_documents_chain(llm, prompt)
+retrieval_chain = create_retrieval_chain(retriever_chain, document_chain)
+
+# TODO: doesn't work with retriever_chain instead of retriever
+# response = retrieval_chain.invoke(
+#     {"chat_history": chat_history, "input": "How many pages have been completed?"}
+# )
+
+# print(response)

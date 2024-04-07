@@ -3,6 +3,8 @@
 ## TODOs
 
 - [x] Build a simple langchain hook to read URL link contents
+- [ ] Langchain crawling of lethain in notebook
+- [ ] Decide between manual vs langchain crawling
 - [ ] Crawl through lethain pages 
 - [ ] Store contents in vectordb 
 - [ ] Init Ollama & LLM

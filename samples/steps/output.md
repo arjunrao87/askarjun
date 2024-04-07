@@ -1,7 +1,0 @@
-# :::ROUND 1::: SIMPLE RETRIEVAL
-
- Navigators are individuals who use various methods and tools to determine the best route or path to reach a specific destination, especially at sea or in the air. They rely on maps, charts, compasses, GPS systems, and other navigational tools to help guide them to their intended location. In the context of technology, particularly in maritime or aviation industries, a Navigator could also refer to a professional who is responsible for safely operating and managing the navigation systems of a vessel or aircraft.
-
-# :::ROUND 2::: RAG RETRIEVAL
-
- Navigators, as mentioned in the context you provided, are individuals responsible for making technical decisions within a specific area of a business. Each major area of the business has exactly one Navigator. They are active contributors to the software written and operated within their area, accountable for the technical decisions made there, and able to interpret organizational strategy to apply it correctly within their context. Navigators are also responsible for aligning with people leadership in their area when making technical decisions and are escalation points for technical consideration within their area or cross-area issues. They report directly to the CTO. The purpose of having Navigators instead of an Architecture Team is that they are expected to improve quickly and have a clearly accountable party for technical decision making, leading to effective communication and resolution of issues.

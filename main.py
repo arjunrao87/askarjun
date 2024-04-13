@@ -33,11 +33,7 @@ def read_from_db():
 def parse_each_item(feed):
     global db
     print("Parsing individual feed entries...")
-    count = 0
     for entry in feed.entries:
-        if count > 3: 
-            break
-        count = count + 1
         document = get_html_for_url(entry.link)
         docs = get_text_chunks_langchain(document)
         db = Chroma.from_documents(docs, embeddings)

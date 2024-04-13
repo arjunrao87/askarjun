@@ -27,7 +27,6 @@ def get_html_for_url(link):
 def read_from_db():
     query = "what were some highlights from stripe's report?"
     ollama = Ollama(model="mistral")
-    print(">>>> Query with Ollama")
     qachain=RetrievalQA.from_chain_type(ollama, retriever=db.as_retriever())
     print(qachain.invoke({"query": query}))
 

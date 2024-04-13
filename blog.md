@@ -22,7 +22,6 @@
     query = "what were some highlights from stripe's report?"
     print("\n" + query)
     docs = db.similarity_search(query)
-    # print results
     print(docs[0].page_content)
 ```
 
@@ -36,7 +35,7 @@ Highlights from Stripe annual 2023 letter | arjunraoarjunraoNewsletterWritingsPr
 ```py
     from langchain_community.llms import Ollama
     from langchain.chains import RetrievalQA
-    
+
     ollama = Ollama(model="mistral")
     print(">>>> Query with Ollama")
     qachain=RetrievalQA.from_chain_type(ollama, retriever=db.as_retriever())

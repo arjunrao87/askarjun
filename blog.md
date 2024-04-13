@@ -34,6 +34,9 @@ Highlights from Stripe annual 2023 letter | arjunraoarjunraoNewsletterWritingsPr
 ## Query using Mistral + Ollama 
 
 ```py
+    from langchain_community.llms import Ollama
+    from langchain.chains import RetrievalQA
+    
     ollama = Ollama(model="mistral")
     print(">>>> Query with Ollama")
     qachain=RetrievalQA.from_chain_type(ollama, retriever=db.as_retriever())

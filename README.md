@@ -9,7 +9,7 @@
 - [x] Store contents in vectordb 
 - [x] Init Ollama & LLM
 - [x] Ask questions to be answered without memory using vectordb (RAG)
-- [ ] Simple chat interface with Chainlit 
+- [x] Simple chat interface with Chainlit 
 ---
 - [ ] Add short term memory 
 - [ ] Add reasoning [Agent based retrieval]

@@ -1,7 +1,6 @@
 import chainlit as cl
 from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
-from langchain.chains import RetrievalQA
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.chains import ConversationalRetrievalChain
@@ -30,13 +29,6 @@ def set_custom_prompt():
     return prompt
 
 def retrieval_qa_chain(llm, prompt, vectorstore):
-    # qa_chain = RetrievalQA.from_chain_type(
-    #     llm=llm,
-    #     chain_type="stuff",
-    #     retriever=vectorstore.as_retriever(search_kwargs={'k': 2}),
-    #     return_source_documents=True,
-    #     chain_type_kwargs={'prompt': prompt}
-    # )    
     memory = ConversationBufferMemory(memory_key="chat_history", input_key='question', output_key='answer', return_messages=True)
     qa_chain = ConversationalRetrievalChain.from_llm(llm, 
                                                      vectorstore.as_retriever(), 
@@ -49,9 +41,8 @@ def qa_chain():
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
     db = Chroma(persist_directory="./chroma_db",embedding_function=embeddings)
     model = Ollama(model="mistral")
-    llm = model
     qa_prompt=set_custom_prompt()
-    qa = retrieval_qa_chain(llm, qa_prompt, db)
+    qa = retrieval_qa_chain(model, qa_prompt, db)
     return qa
 
 @cl.on_chat_start
@@ -63,19 +54,17 @@ async def on_chat_start():
     chain = qa_chain()
     cl.user_session.set("chain", chain)
 
-
 @cl.on_message
 async def on_message(message: cl.Message):
     chain = cl.user_session.get("chain")
     msg = cl.Message(content="")
+    await msg.send()
     cb = cl.AsyncLangchainCallbackHandler()
     cb.answer_reached = True
     res = await chain.acall(message.content, callbacks=[cb])
     answer = res["answer"]
     source_documents = res["source_documents"]
-
     text_elements = []
-
     if source_documents:
         for source_idx, source_doc in enumerate(source_documents):
             source_name = f"source_{source_idx}"

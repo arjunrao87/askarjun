@@ -1,0 +1,21 @@
+services:
+  ollama-container:
+    hostname: ollama-container
+    image: ollama/ollama
+    environment:
+      OLLAMA_HOST: 0.0.0.0
+    volumes:
+      - ./data/ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  askarjun-app:
+    image: askarjun:latest
+    environment:
+      OLLAMA_HOST: 0.0.0.0
+    ports:
+      - 8000:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

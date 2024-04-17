@@ -5,3 +5,4 @@ chroma_db
 .chainlit
 __pycache__
 .files
+data/

@@ -14,8 +14,9 @@
 - [x] Figure out how to run ollama in a container 
 - [x] Containerize chainlit
 - [x] Run ollama with chainlit
-- [ ] Containerize backend 
 - [ ] Deploy chatbot to "cloud"
+- [ ] Containerize data ingest 
+- [ ] Fix ollama reference in local vs container mode
 - [ ] Deploy data ingest process
 - [ ] process to store chromadb to R2
 - [ ] load chromadb up from R2 location

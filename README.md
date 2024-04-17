@@ -24,21 +24,43 @@
 
 ## Running askarjun
 
-### 1. Running locally 
+### 1. Local virtualenv setup
 
 ```sh
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+### 2. Ingest blogs
+
+```sh
+python src/ingest.py
+```
+
+### 3. Running chainlit 
+
+```sh
 chainlit run src/chat.py
 ```
 
-### 2. Container stuff
+### 4. Container stuff
 
 ```sh
 docker build -t askarjun:latest
 docker-compose up
 ```
 
-### 3. Pull down Ollama models 
+### 5. Pull down Ollama models 
+
+#### a. Local mode
+
+```sh
+ollama pull nomic-embed-text
+ollama pull mistral
+```
+
+#### b. In container mode
 
 ```sh
 docker exec -it askarjun-ollama-container-1  ollama pull nomic-embed-text

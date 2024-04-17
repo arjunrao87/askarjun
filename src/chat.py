@@ -38,9 +38,9 @@ def retrieval_qa_chain(llm, prompt, vectorstore):
     return qa_chain
 
 def qa_chain():
-    embeddings = OllamaEmbeddings(model="nomic-embed-text")
+    embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url="http://ollama-container:11434")
     db = Chroma(persist_directory="./chroma_db",embedding_function=embeddings)
-    model = Ollama(model="mistral")
+    model = Ollama(model="mistral", base_url="http://ollama-container:11434")
     qa_prompt=set_custom_prompt()
     qa = retrieval_qa_chain(model, qa_prompt, db)
     return qa

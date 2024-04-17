@@ -18,6 +18,7 @@
 - [ ] Deploy chatbot to "cloud"
 - [ ] Deploy data ingest process
 - [ ] process to store chromadb to R2
+- [ ] load chromadb up from R2 location
 - [ ] Stream responses back instead of all together
 - [ ] Add reasoning [Agent based retrieval]
 - [ ] Add Streamlit Copilot at [arjunrao.co](https://docs.chainlit.io/deployment/copilot)
@@ -68,3 +69,9 @@ docker exec -it askarjun-ollama-container-1  ollama pull mistral
 ```
 
 Models are stored in `./data/ollama` which are mapped into the container as a volume (see [docker-compose.yml](./docker-compose.yml))
+
+### 6. Push chromadb to R2
+
+```sh 
+python src/r2.py
+```

@@ -13,7 +13,7 @@
 - [x] Add short term memory
 - [x] Figure out how to run ollama in a container 
 - [x] Containerize chainlit
-- [ ] Run ollama with chainlit
+- [x] Run ollama with chainlit
 - [ ] Containerize backend 
 - [ ] Deploy chatbot to "cloud"
 - [ ] Deploy data ingest process

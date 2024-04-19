@@ -16,6 +16,7 @@
 - [x] Run ollama with chainlit
 - [ ] Add github action to build image + deploy to digital ocean
 - [ ] Deploy chatbot to "cloud"
+- [ ] Add black/isort
 - [ ] Containerize data ingest 
 - [ ] Fix ollama reference in local vs container mode (ansible/terraform)
 - [ ] Deploy data ingest process

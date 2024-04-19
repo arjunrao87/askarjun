@@ -1,0 +1,29 @@
+name: deploy
+run-name: ${{ github.actor }} is building AskArjun 🏗️
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build image
+        run: make build-image
+  docker-push:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log into GH registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_PAT }}
+      - name: Push to GHCR 
+        run: |
+          docker buildx build --push -t ghcr.io/${{ github.repository }}:latest .

@@ -14,6 +14,7 @@
 - [x] Figure out how to run ollama in a container 
 - [x] Containerize chainlit
 - [x] Run ollama with chainlit
+- [ ] Add github action to build image + deploy to digital ocean
 - [ ] Deploy chatbot to "cloud"
 - [ ] Containerize data ingest 
 - [ ] Fix ollama reference in local vs container mode (ansible/terraform)

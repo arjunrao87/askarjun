@@ -16,7 +16,7 @@
 - [x] Run ollama with chainlit
 - [ ] Deploy chatbot to "cloud"
 - [ ] Containerize data ingest 
-- [ ] Fix ollama reference in local vs container mode
+- [ ] Fix ollama reference in local vs container mode (ansible/terraform)
 - [ ] Deploy data ingest process
 - [ ] process to store chromadb to R2
 - [ ] load chromadb up from R2 location

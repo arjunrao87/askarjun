@@ -26,3 +26,18 @@ jobs:
       - name: Push to GHCR 
         run: |
           docker buildx build --push -t ghcr.io/${{ github.repository }}:latest .
+      - name: DigitalOcean App Platform deployment
+        uses: digitalocean/app_action@v1.1.6 
+        with:
+          app_name: askarjun
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          images: '[
+                    {
+                      "name": "askarjun",
+                        "image":{
+                        "registry_type": "DOCR",
+                        "repository": "arjunrao87",
+                        "tag": "0.1"
+                      },
+                    }
+                  ]'
